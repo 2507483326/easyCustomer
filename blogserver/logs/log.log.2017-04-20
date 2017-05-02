@@ -1,0 +1,36 @@
+17-04-20 10:21:34.107 DEBUG (_Log4jLoggerFactory.java:44) Couldn't find template in cache for "email.ftl"("zh_CN", UTF-8, parsed); will try to load it.
+17-04-20 10:21:34.109 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh_CN.ftl"): Not found
+17-04-20 10:21:34.110 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh.ftl"): Not found
+17-04-20 10:21:34.110 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email.ftl"): Found
+17-04-20 10:21:34.111 DEBUG (_Log4jLoggerFactory.java:44) Loading template for "email.ftl"("zh_CN", UTF-8, parsed) from "E:\\project\\icode\\blog\\net\\target\\classes\\templates\\email.ftl"
+17-04-20 10:23:09.724 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh_CN.ftl"): Not found
+17-04-20 10:23:09.725 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh.ftl"): Not found
+17-04-20 10:23:09.725 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email.ftl"): Found
+17-04-20 10:23:09.726 DEBUG (_Log4jLoggerFactory.java:44) "email.ftl"("zh_CN", UTF-8, parsed): using cached since E:\project\icode\blog\net\target\classes\templates\email.ftl hasn't changed.
+17-04-20 10:27:36.192 DEBUG (_Log4jLoggerFactory.java:44) Couldn't find template in cache for "email.ftl"("zh_CN", UTF-8, parsed); will try to load it.
+17-04-20 10:27:36.194 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh_CN.ftl"): Not found
+17-04-20 10:27:36.195 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh.ftl"): Not found
+17-04-20 10:27:36.196 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email.ftl"): Not found
+17-04-20 10:28:41.525 DEBUG (_Log4jLoggerFactory.java:44) Couldn't find template in cache for "email.ftl"("zh_CN", UTF-8, parsed); will try to load it.
+17-04-20 10:28:41.527 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh_CN.ftl"): Not found
+17-04-20 10:28:41.528 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh.ftl"): Not found
+17-04-20 10:28:41.528 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email.ftl"): Not found
+17-04-20 10:32:52.529 DEBUG (_Log4jLoggerFactory.java:44) Couldn't find template in cache for "email.ftl"("zh_CN", UTF-8, parsed); will try to load it.
+17-04-20 10:32:52.531 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh_CN.ftl"): Not found
+17-04-20 10:32:52.532 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh.ftl"): Not found
+17-04-20 10:32:52.533 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email.ftl"): Found
+17-04-20 10:32:52.533 DEBUG (_Log4jLoggerFactory.java:44) Loading template for "email.ftl"("zh_CN", UTF-8, parsed) from "E:\\project\\icode\\blog\\net\\target\\classes\\templates\\email.ftl"
+17-04-20 11:56:12.774 DEBUG (_Log4jLoggerFactory.java:44) Couldn't find template in cache for "email.ftl"("zh_CN", UTF-8, parsed); will try to load it.
+17-04-20 11:56:12.776 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh_CN.ftl"): Not found
+17-04-20 11:56:12.777 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh.ftl"): Not found
+17-04-20 11:56:12.778 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email.ftl"): Found
+17-04-20 11:56:12.778 DEBUG (_Log4jLoggerFactory.java:44) Loading template for "email.ftl"("zh_CN", UTF-8, parsed) from "E:\\project\\icode\\blog\\net\\target\\classes\\templates\\email.ftl"
+17-04-20 15:10:06.197 DEBUG (_Log4jLoggerFactory.java:44) Couldn't find template in cache for "email.ftl"("zh_CN", UTF-8, parsed); will try to load it.
+17-04-20 15:10:06.226 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh_CN.ftl"): Not found
+17-04-20 15:10:06.227 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh.ftl"): Not found
+17-04-20 15:10:06.227 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email.ftl"): Found
+17-04-20 15:10:06.228 DEBUG (_Log4jLoggerFactory.java:44) Loading template for "email.ftl"("zh_CN", UTF-8, parsed) from "E:\\project\\icode\\blog\\net\\target\\classes\\templates\\email.ftl"
+17-04-20 15:25:56.610 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh_CN.ftl"): Not found
+17-04-20 15:25:56.611 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh.ftl"): Not found
+17-04-20 15:25:56.611 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email.ftl"): Found
+17-04-20 15:25:56.611 DEBUG (_Log4jLoggerFactory.java:44) "email.ftl"("zh_CN", UTF-8, parsed): using cached since E:\project\icode\blog\net\target\classes\templates\email.ftl hasn't changed.

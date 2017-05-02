@@ -1,0 +1,8 @@
+svg-circle($radius, $percent, $animateName)
+	$circumference = (3.141592656535 * (2 * $radius))
+	$stroke_percentage = $circumference - (($percent / 100) * $circumference)
+	stroke-dasharray unit($circumference, 'px')
+	stroke-dashoffset unit($circumference, 'px')
+	@keyframes $animateName
+		100%
+			stroke-dashoffset $stroke_percentage

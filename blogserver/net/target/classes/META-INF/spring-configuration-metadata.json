@@ -1,0 +1,42 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "blog.net.config.MyJdbc",
+      "name": "myJdbc",
+      "type": "blog.net.config.MyJdbc"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "blog.net.config.MyJdbc",
+      "name": "myJdbc.base-package",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "blog.net.config.MyJdbc",
+      "name": "myJdbc.dao-suffix",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "blog.net.config.MyJdbc",
+      "name": "myJdbc.pass-word",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "blog.net.config.MyJdbc",
+      "name": "myJdbc.sql-loader",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "blog.net.config.MyJdbc",
+      "name": "myJdbc.url",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "blog.net.config.MyJdbc",
+      "name": "myJdbc.user-name",
+      "type": "java.lang.String"
+    }
+  ]
+}
