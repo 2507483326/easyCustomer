@@ -13,7 +13,7 @@
 			<div class="entry_box">
 				<div class="validate_input">
 					<e-tip :text="validateCode.tip.text" :show="validateCode.tip.show" :place="validateCode.tip.place">
-						<e-input v-model="validateCode.value" :name="validateCode.name" :type="validateCode.type" :placeholder="validateCode.placeholder" :verification="validateCode.verification" :isError="validateCode.isError" :errorText="validateCode.errorText" :emptyText="validateCode.emptyText" :iChange="iChange"></e-input>
+						<e-input v-ep-proving:register.Password v-model="validateCode.value" :name="validateCode.name" :type="validateCode.type" :placeholder="validateCode.placeholder" :verification="validateCode.verification" :isError="validateCode.isError" :errorText="validateCode.errorText" :emptyText="validateCode.emptyText" :iChange="iChange"></e-input>
 					</e-tip>
 				</div>
 				<div class="validate_code" :class="[validateTime > 0 ? 'clicked' : '']" :disabled="validateTime > 0 ? true : false" @click.stop.prevent="getValidateCode">{{getValidateText}}</div>

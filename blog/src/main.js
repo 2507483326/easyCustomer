@@ -10,7 +10,10 @@ import http from './http'
 // 启用iview ui组件库
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
+// 验证组件
+import ep from 'plugins/ep'
 Vue.use(iView)
+Vue.use(ep)
 Vue.prototype.Global = Global
 Vue.prototype.URL = URL
 Vue.prototype.ERROR_CODE = ERROR_CODE
