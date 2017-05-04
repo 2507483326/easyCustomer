@@ -63,38 +63,12 @@ function check (v, conditions) {
 ep.install = function (Vue, options) {
 	Vue.directive('ep-proving', {
 		bind: function (el, binding, vnode) {
-			// 初始化变量
-			var vm = vnode.context
-			var	option = binding.modifiers
-            var expression = binding.expression
-            var group = binding.arg
-            var name = el.getAttribute('name')
-            console.log(binding.value)
-            // 初始化 epList 盒子
-            var epList = vm.epList || (vm.epList = {})
-
-            // 初始化组
-            var epGroup = epList[group] || (epList[group] = {})
-
-            // 立即校验
-            if (option.now) {
-                el.addEventListener('change', function () {
-                    var flag = 0
-                    var value = el.value
-                    vm.epResult || (vm.epResult = {})
-                    // 如果为空， 且允许为空
-                    if (value === '' && option.null) {
-                        return
-                    }
-                    // 校验
-                    if (expression) {
-                        flag = check(value, expression)
-                    }
-                    // ajax 验证
-
-                    epGroup[name] = flag
-                })
+            var flag = false
+            if (flag) {
+                check(1, 2)
             }
+			el.addEventListener('input', function () {
+            })
 		}
 	})
 }

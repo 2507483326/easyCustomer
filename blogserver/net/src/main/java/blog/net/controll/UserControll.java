@@ -32,6 +32,7 @@ import qing.tool.StringTool;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -206,7 +207,7 @@ public class UserControll {
         String result = (String)redisTemplate.opsForValue().get(email);
         if (StringTool.IsTrimEmpty(result)) {
             try {
-                String randomCode = EpatString.getRandomString(5);
+                String randomCode = EpatString.getRandomString(4);
                 redisTemplate.opsForValue().set(email,email,1, TimeUnit.MINUTES);
                 redisTemplate.opsForValue().set(email + "code", randomCode, 10, TimeUnit.MINUTES);
                 logger.info("========验证码为::::" + randomCode);
@@ -241,10 +242,28 @@ public class UserControll {
     }
 
     @PostMapping(value = "/register")
-    public Excution register(User user, String validateCode){
+    public Excution register(User user, String validateCode, HttpServletRequest request){
+        ErrorExcution excution = new ErrorExcution();
         //进行判空操作
         //验证码判断
-        userService.register(user);
+        String randomCode = redisTemplate.opsForValue().get(user.getEmail() + "code").toString();
+        logger.info("================" + randomCode.toUpperCase());
+        logger.info("===============" + validateCode.toUpperCase());
+        if (!validateCode.toUpperCase().equals(randomCode.toUpperCase())) {
+            excution.setCode(GlobalError.VALIDATECODE_MISMATCH);
+            excution.setMessage("验证码不匹配");
+            return  new Excution(false, excution);
+        }
+        try {
+            user.setLoginName(user.getEmail());
+            user.setRegIp(epatUtils.getIpAddress(request));
+            user.setRegTime(new Date());
+            userService.register(user);
+        }catch (Exception e) {
+            logger.error("注册失败，数据库插入错误", e);
+            throw new RuntimeException("注册失败，数据库插入错误");
+        }
+        logger.info("=========" + user);
         return new Excution(true,"注册成功");
     }
 

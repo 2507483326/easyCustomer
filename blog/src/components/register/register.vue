@@ -13,7 +13,7 @@
 			<div class="entry_box">
 				<div class="validate_input">
 					<e-tip :text="validateCode.tip.text" :show="validateCode.tip.show" :place="validateCode.tip.place">
-						<e-input v-ep-proving:register.Password v-model="validateCode.value" :name="validateCode.name" :type="validateCode.type" :placeholder="validateCode.placeholder" :verification="validateCode.verification" :isError="validateCode.isError" :errorText="validateCode.errorText" :emptyText="validateCode.emptyText" :iChange="iChange"></e-input>
+						<e-input v-ep-proving:register.Password="132" group="registerssssss" v-model="validateCode.value" :name="validateCode.name" :type="validateCode.type" :placeholder="validateCode.placeholder" :verification="validateCode.verification" :isError="validateCode.isError" :errorText="validateCode.errorText" :emptyText="validateCode.emptyText" :iChange="iChange"></e-input>
 					</e-tip>
 				</div>
 				<div class="validate_code" :class="[validateTime > 0 ? 'clicked' : '']" :disabled="validateTime > 0 ? true : false" @click.stop.prevent="getValidateCode">{{getValidateText}}</div>
@@ -33,8 +33,8 @@
 		data () {
 			return {
 				registerForm:{
-					loginName:{
-						name:'loginName',
+					email:{
+						name:'email',
 						value:'',
 						placeholder:'请输入邮箱',
 						verification: '^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$',
@@ -78,6 +78,7 @@
 					},
 					tryPassword:{
 						name:'tryPassword',
+						type:'password',
 						value:'',
 						placeholder:'请确认密码',
 						verification: '^[A-Za-z0-9@#\\.]{6,16}$',
@@ -95,7 +96,7 @@
 					name:'validateCode',
 					value:'',
 					placeholder:'请输入验证码',
-					verification: '^[0-9]{4}$',
+					verification: '^[A-Za-z0-9@#\\.]{4}$',
 					emptyText:'验证码不能为空',
 					errorText:'输入正确的验证码',
 					isError: false,
@@ -116,8 +117,8 @@
 		methods: {
 			register (event) {
 				let flag = false
-				let register = {}
-				// let _this = this
+				let registerData = {}
+				let _this = this
 				for (let name in this.registerForm) {
 					let obj = this.registerForm[name]
 					flag = this.isCheck(obj.value, obj)
@@ -134,13 +135,19 @@
 				}
 				for (let name in this.registerForm) {
 					let obj = this.registerForm[name]
-					register[obj.name] = obj.value
+					registerData[obj.name] = obj.value
 				}
-				register['validateCode'] = this.validateCode.value
+				registerData['validateCode'] = this.validateCode.value
+
+				// 注册
+				_this.$http.post(_this.URL.REGISTER_URL, _this.Global.querystring.stringify(registerData)).then((re) => {
+					if (re.status === 200) {}
+				}).catch((error) => {
+					console.log('error' + error)
+				})
 			},
 			iChange (value, _this) {
 				let name = _this.name
-				console.log(name)
 				if (name === 'validateCode') {
 					let now = this.validateCode
 					this.isCheck(value, now)
@@ -170,6 +177,15 @@
 							this.closeTipError(now)
 							flag = true
 							// 其他 验证
+							if (now.name.trim() === 'tryPassword') {
+								if (!(value === this.registerForm.password.value)) {
+									this.showTipError(now, now.errorText)
+									flag = false
+								} else {
+									this.closeTipError(now)
+									flag = true
+								}
+							}
 						}
 					}
 				}
@@ -188,14 +204,13 @@
 				if (this.validateTime > 0) {
 					return
 				}
-				let email = this.registerForm.loginName.value
-				let emailObj = this.registerForm.loginName
+				let email = this.registerForm.email.value
+				let emailObj = this.registerForm.email
 				let _this = this
 				let excution = {}
 				const EMAIL_HASEMAIL_TEXT = '此邮箱已被注册'
 				excution['email'] = email
-				console.log(this.registerForm.loginName)
-				if (!this.isCheck(email, this.registerForm.loginName)) {
+				if (!this.isCheck(email, this.registerForm.email)) {
 					return
 				}
 				// 设置clock

@@ -59,7 +59,6 @@
 		},
 		computed:{
 			isMail () {
-				console.log(this.loginForm.loginName.value)
 				let reg = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/
 				if (!reg.test(this.loginForm.loginName.value)) {
 					return false
@@ -67,7 +66,6 @@
 				return true
 			},
 			isPassword () {
-				console.log(this.loginForm.password.value)
 				if (this.loginForm.password.value.length >= 6 && this.loginForm.password.value.length <= 13) {
 					return true
 				}

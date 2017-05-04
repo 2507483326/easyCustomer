@@ -37,4 +37,7 @@ public class GlobalError {
 
     // 邮件已注册
     public static final Integer EMAIL_HASEMAIL = 610;
+
+    // 验证码不匹配
+    public static final Integer VALIDATECODE_MISMATCH = 611;
 }

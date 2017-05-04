@@ -11,11 +11,15 @@ let URL = (() => {
     // 获取验证码
     const GET_VALIDATECODE = 'user/getValidateCode'
 
+    // 注册
+    const REGISTER_URL = 'user/register'
+
 	return {
         LOGIN_URL,
         LOGIN_OUT,
         REMEMBER_LOGIN,
-        GET_VALIDATECODE
+        GET_VALIDATECODE,
+        REGISTER_URL
 	}
 })()
 
