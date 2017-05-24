@@ -1,64 +1,35 @@
 <template>
-	<div :class="outBoxClass ? outBoxClass : ''">
-		<input ref="input" :class="[iClass ? iClass : '','e_input', isError === true ? 'e_input_error' : '']" :type="type ? type : 'text'" :name="name ? name : ''" :placeholder="placeholder" v-bind:value="value" v-on:input="updateValue($event.target.value)" @click.stop.prevent="click($event)" @blur.stop.prevent="blur($event)">
-	</div>
+	<input class="e_input" :class="[isError === true ? 'e_input_error' : '', getGroupNmae]" :type="type ? type : 'text'" :placeholder="placeholder" v-bind:value="value" v-on:input="updateValue($event.target.value)" >
 </template>
 
 <script>
 	export default {
 		name: 'eInput',
 		props: {
-			// 名称
-			name: {
-				type: String
-			},
-			// 父元素class
-			outBoxClass: {
-				type: String
-			},
 			// 类型
 			type: {
-				type: String
-			},
-			// 初始化提示
-			placeholder: {
-				type: String
-			},
-			// 空字符串提示
-			emptyText: {
 				type: String
 			},
 			// 值
 			value: {
 				type: String
 			},
-			// 错误提示
-			errorText: {
-				type: String
-			},
-			// 校验正则
-			verification: {
-				type: String
-			},
 			// 是否错误
 			isError: {
 				type: Boolean
 			},
-			// input class
-			iClass: {
+			// 初始化提示
+			placeholder: {
 				type: String
 			},
-			// input 改变事件
-			iChange: {
-				type: Function
-			},
-			// input 点击事件
-			iClick: {
-				type: Function
-			},
-			// input blur事件
-			iBlur: {
-				type: Function
+			group: {
+				type: String,
+				default: 'default'
+			}
+		},
+		computed: {
+			getGroupNmae () {
+				return 'epVa_' + this.group
 			}
 		},
 		methods: {
@@ -68,20 +39,6 @@
 					this.$refs.input.value = formValue
 				}
 				this.$emit('input', String(formValue))
-				// 绑定change事件
-				if (typeof this.iChange === 'function') {
-					this.iChange(value, this)
-				}
-			},
-			click (value) {
-				if (typeof this.iClick === 'function') {
-					this.iClick(value, this)
-				}
-			},
-			blur (value) {
-				if (typeof this.iBlur === 'function') {
-					this.iBlur(value, this)
-				}
 			}
 		}
 	}

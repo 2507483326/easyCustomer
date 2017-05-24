@@ -14,12 +14,16 @@ let URL = (() => {
     // 注册
     const REGISTER_URL = 'user/register'
 
+    // 判断邮箱是否存在
+    const EXISTEMAIL_URL = 'user/isExistEmail'
+
 	return {
         LOGIN_URL,
         LOGIN_OUT,
         REMEMBER_LOGIN,
         GET_VALIDATECODE,
-        REGISTER_URL
+        REGISTER_URL,
+        EXISTEMAIL_URL
 	}
 })()
 

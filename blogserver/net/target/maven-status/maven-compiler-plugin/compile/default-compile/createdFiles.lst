@@ -7,10 +7,12 @@ blog\net\config\MyShiroRealm.class
 blog\net\config\GlobalExceptionHandler.class
 blog\net\config\AjaxShiroFilter.class
 blog\net\serviceImpl\UserServiceImpl.class
+blog\net\config\TaskConfig.class
 blog\net\dbUtil\UserUtil.class
 blog\net\serviceImpl\RuleServiceImpl.class
 blog\net\config\ShiroToken.class
 blog\net\Tools\EpatString.class
+blog\net\Tools\EpatEmail.class
 blog\net\config\BeetlsqlConfig.class
 blog\net\config\RedisCacheConfig$1.class
 blog\net\config\MyJdbc.class

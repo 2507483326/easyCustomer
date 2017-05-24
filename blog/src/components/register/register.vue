@@ -5,15 +5,15 @@
 		</div>
 		<form>
 			<h1><img src="../img/logo.png" alt="logo" title="logo">注册</h1>
-			<div class="entry_box" v-for="item in registerForm">
+			<div :class="['entry_box', item.isError ? 'error_input' : '']" v-for="item in registerForm">
 				<e-tip :text="item.tip.text" :show="item.tip.show" :place="item.tip.place">
-					<e-input v-model="item.value" :name="item.name" :type="item.type" :placeholder="item.placeholder" :verification="item.verification" :isError="item.isError" :errorText="item.errorText" :emptyText="item.emptyText" :iChange="iChange"></e-input>
+					<e-input v-ep-proving="item" v-model="item.value" :name="item.name" :type="item.type" :group="item.group"  :placeholder="item.placeholder" :isError="item.isError" ></e-input>
 				</e-tip>
 			</div>
-			<div class="entry_box">
+			<div :class="['entry_box', item.isError ? 'error_input' : '']" v-for="item in validateCodeForm">
 				<div class="validate_input">
-					<e-tip :text="validateCode.tip.text" :show="validateCode.tip.show" :place="validateCode.tip.place">
-						<e-input v-ep-proving:register.Password="132" group="registerssssss" v-model="validateCode.value" :name="validateCode.name" :type="validateCode.type" :placeholder="validateCode.placeholder" :verification="validateCode.verification" :isError="validateCode.isError" :errorText="validateCode.errorText" :emptyText="validateCode.emptyText" :iChange="iChange"></e-input>
+					<e-tip :text="item.tip.text" :show="item.tip.show" :place="item.tip.place">
+						<e-input v-ep-proving="item" :group="item.group" v-model="item.value" :name="item.name" :type="item.type" :placeholder="item.placeholder" :isError="item.isError" ></e-input>
 					</e-tip>
 				</div>
 				<div class="validate_code" :class="[validateTime > 0 ? 'clicked' : '']" :disabled="validateTime > 0 ? true : false" @click.stop.prevent="getValidateCode">{{getValidateText}}</div>
@@ -33,13 +33,15 @@
 		data () {
 			return {
 				registerForm:{
-					email:{
-						name:'email',
-						value:'',
-						placeholder:'请输入邮箱',
-						verification: '^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$',
-						emptyText:'邮箱不能为空',
-						errorText:'请输入正确的邮箱',
+					email: {
+						name: 'email',
+						alias: '邮箱',
+						group: 'registerGroup',
+						value: '',
+						placeholder: '请输入邮箱',
+						rule: [{type: 'nonvoid', typeVal: true}, {type: 'reg', typeVal: 'Mail', errMsg: '请输入正确的邮箱'}, {type: 'ajax', typeVal: this.URL.EXISTEMAIL_URL, errMsg: '邮箱已存在'}],
+						isNow: true,
+						canNull: false,
 						isError: false,
 						tip: {
 							place: 'right',
@@ -47,13 +49,15 @@
 							show: false
 						}
 					},
-					nickName:{
-						name:'nickName',
+					nickName: {
+						name: 'nickName',
+						alias: '用户名',
 						value:'',
 						placeholder:'请输入用户名',
-						verification: '^[\\u4e00-\\u9fa5_a-zA-Z0-9-]{1,16}$',
-						emptyText:'用户名不能为空',
-						errorText:'请输入正确的用户名',
+						group: 'registerGroup',
+						rule: [{type: 'nonvoid', typeVal: true}, {type: 'reg', typeVal: /^[\\u4e00-\\u9fa5_a-zA-Z0-9-]{1,16}$/, errMsg: '请输入正确的用户名'}],
+						isNow: true,
+						canNull: false,
 						isError: false,
 						tip: {
 							place: 'right',
@@ -61,14 +65,16 @@
 							show: false
 						}
 					},
-					password:{
-						name:'password',
+					password: {
+						name: 'password',
 						type:'password',
+						alias: '密码',
+						group: 'registerGroup',
 						value:'',
 						placeholder:'请输入密码',
-						verification: '^[A-Za-z0-9@#\\.]{6,16}$',
-						emptyText:'密码不能为空',
-						errorText:'请输入6-16位密码',
+						rule: [{type: 'nonvoid', typeVal: true}, {type: 'reg', typeVal: /^[A-Za-z0-9@#\\.]{6,16}$/, errMsg: '请输入6-16位密码'}],
+						isNow: true,
+						canNull: false,
 						isError: false,
 						tip: {
 							place: 'right',
@@ -76,14 +82,15 @@
 							show: false
 						}
 					},
-					tryPassword:{
-						name:'tryPassword',
-						type:'password',
-						value:'',
-						placeholder:'请确认密码',
-						verification: '^[A-Za-z0-9@#\\.]{6,16}$',
-						emptyText:'密码不能为空',
-						errorText:'输入的密码不匹配',
+					tryPassword: {
+						name: 'tryPassword',
+						type: 'password',
+						group: 'registerGroup',
+						value: '',
+						placeholder: '请确认密码',
+						rule: [{type: 'nonvoid', typeVal: true, errMsg: '请重新输入密码'}, {type: 'equal', typeVal: 'password', errMsg: '两次输入密码不匹配'}],
+						isNow: true,
+						canNull: false,
 						isError: false,
 						tip: {
 							place: 'right',
@@ -92,18 +99,22 @@
 						}
 					}
 				},
-				validateCode: {
-					name:'validateCode',
-					value:'',
-					placeholder:'请输入验证码',
-					verification: '^[A-Za-z0-9@#\\.]{4}$',
-					emptyText:'验证码不能为空',
-					errorText:'输入正确的验证码',
-					isError: false,
-					tip: {
-						place: 'left',
-						text: '',
-						show: false
+				validateCodeForm:{
+					validateCode: {
+						name:'validateCode',
+						value:'',
+						group: 'validateCodeGroup',
+						alias: '验证码',
+						placeholder:'请输入验证码',
+						rule: [{type: 'nonvoid', typeVal: true, errMsg: '验证码不能为空'}, {type: 'reg', typeVal: /^[A-Za-z0-9@#\\.]{4}$/, errMsg: '请输入4位字符的验证码'}],
+						isNow: true,
+						canNull: false,
+						isError: false,
+						tip: {
+							place: 'left',
+							text: '',
+							show: false
+						}
 					}
 				},
 				validateTime: 0
@@ -116,89 +127,39 @@
 		},
 		methods: {
 			register (event) {
-				let flag = false
-				let registerData = {}
 				let _this = this
-				for (let name in this.registerForm) {
-					let obj = this.registerForm[name]
-					flag = this.isCheck(obj.value, obj)
-					if (!flag) {
-						return
-					}
-				}
+				// 如果信息不完整
+				let flag = _this.epCheck(['registerGroup'], this.registerForm)
 				if (!flag) {
 					return
 				}
-				// 验证码单独判断
-				if (!this.isCheck(this.validateCode.value, this.validateCode)) {
+				// 如果验证码未填写
+				flag = _this.epCheck(['validateCodeGroup'], this.validateCodeForm)
+				if (!flag) {
 					return
 				}
+				// 构造对象
+				let registerData = {}
 				for (let name in this.registerForm) {
 					let obj = this.registerForm[name]
 					registerData[obj.name] = obj.value
 				}
-				registerData['validateCode'] = this.validateCode.value
-
+				registerData['validateCode'] = this.validateCodeForm.validateCode.value
 				// 注册
 				_this.$http.post(_this.URL.REGISTER_URL, _this.Global.querystring.stringify(registerData)).then((re) => {
-					if (re.status === 200) {}
+					let data = re.data
+					if (re.status === 200) {
+						if (data.success) {
+							// 执行登录
+							_this.$store.dispatch('login', data.substance)
+							// 是否跳转
+						} else {
+							// 注册失败
+						}
+					}
 				}).catch((error) => {
 					console.log('error' + error)
 				})
-			},
-			iChange (value, _this) {
-				let name = _this.name
-				if (name === 'validateCode') {
-					let now = this.validateCode
-					this.isCheck(value, now)
-				} else {
-					let now = this.registerForm[name]
-					this.isCheck(value, now)
-				}
-			},
-			isCheck (value, now) {
-				let flag = true
-				if (value === '' || value.length === 0) {
-					if (!(typeof (now.emptyText) === 'undefined')) {
-						this.showTipError(now, now.emptyText)
-					} else {
-						this.showTipError(now, now.errorText)
-					}
-					flag = false
-				} else {
-					this.closeTipError(now)
-					flag = true
-					if (typeof (now.verification) !== 'undefined') {
-						let reg = new RegExp(now.verification)
-						if (!reg.test(value)) {
-							this.showTipError(now, now.errorText)
-							flag = false
-						} else {
-							this.closeTipError(now)
-							flag = true
-							// 其他 验证
-							if (now.name.trim() === 'tryPassword') {
-								if (!(value === this.registerForm.password.value)) {
-									this.showTipError(now, now.errorText)
-									flag = false
-								} else {
-									this.closeTipError(now)
-									flag = true
-								}
-							}
-						}
-					}
-				}
-				return flag
-			},
-			showTipError (obj, text) {
-				obj.tip.text = text
-				obj.tip.show = true
-				obj.isError = true
-			},
-			closeTipError (obj) {
-				obj.tip.show = false
-				obj.isError = false
 			},
 			getValidateCode () {
 				if (this.validateTime > 0) {
@@ -210,7 +171,8 @@
 				let excution = {}
 				const EMAIL_HASEMAIL_TEXT = '此邮箱已被注册'
 				excution['email'] = email
-				if (!this.isCheck(email, this.registerForm.email)) {
+				console.log(this.epCheckSingle(['registerGroup'], this.registerForm, 'email'))
+				if (!this.epCheckSingle(['registerGroup'], this.registerForm, 'email')) {
 					return
 				}
 				// 设置clock

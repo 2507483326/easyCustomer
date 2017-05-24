@@ -1,5 +1,8 @@
 package blog.service.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -13,10 +16,16 @@ public class User implements Serializable{
     private Long id ;
     private Integer state ;
     private String avatar ;
+    @NotEmpty(message = "邮箱不能为空")
+    @Pattern(regexp = "([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+\\.)+([a-zA-Z0-9]{2,4})+", message = "邮箱格式不匹配")
     private String email ;
     private String loginName ;
     private String mobile ;
+    @NotEmpty(message = "用户名不能为空")
+    @Pattern(regexp = "[\\w|\\d]{4,16}", message = "用户名格式不正确")
     private String nickName ;
+    @NotEmpty(message = "密码不能为空")
+    @Pattern(regexp = "[\\w!@#$%^&*.]{6,16}", message = "密码格式不正确")
     private String password ;
     //用户注册城市
     private String regCity ;

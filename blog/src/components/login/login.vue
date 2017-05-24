@@ -7,7 +7,7 @@
 			<h1><img src="../img/logo.png" alt="logo" title="logo">登录</h1>
 			<div :class="['entry_box', item.isError ? 'error_input' : '']" v-for="item in loginForm">
 				<e-tip :text="item.tip.text" :show="item.tip.show" :place="item.tip.place">
-					<e-input v-model="item.value" :name="item.name" :type="item.type" :placeholder="item.placeholder" :verification="item.verification" :isError="item.isError" :errorText="item.errorText" :emptyText="item.emptyText" :iChange="iChange"></e-input>
+					<e-input v-ep-proving="item" v-model="item.value" :name="item.name" :type="item.type" :group="item.group" :placeholder="item.placeholder" :isError="item.isError" ></e-input>
 				</e-tip>
 			</div>
 			<div class="button_box">
@@ -26,13 +26,15 @@
 		data () {
 			return {
 				loginForm:{
-					loginName:{
-						name: 'loginName',
+					email: {
+						name: 'email',
+						alias: '邮箱',
 						value: '',
 						placeholder: '请输入邮箱',
-						verification: '^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$',
-						emptyText: '邮箱不能为空',
-						errorText: '请输入正确的邮箱',
+						group: 'login',
+						rule: [{type: 'nonvoid', typeVal: true}, {type: 'reg', typeVal: 'Mail', errMsg: '请输入正确的邮箱'}],
+						isNow: true,
+						canNull: false,
 						isError: false,
 						tip: {
 							place: 'right',
@@ -40,14 +42,17 @@
 							show: false
 						}
 					},
-					password:{
-						name:'password',
+					password: {
+						name: 'password',
+						alias: '密码',
 						type:'password',
-						value:'',
 						placeholder:'请输入密码',
-						verification: '^[A-Za-z0-9@#\\.]{6,16}$',
-						emptyText: '密码不能为空',
-						errorText: '请输入6-16位的密码',
+						value:'',
+						group: 'login',
+						rule: [{type: 'nonvoid', typeVal: true}, {type: 'reg', typeVal: 'Password', errMsg: '请输入6-16位字符的密码'}],
+						isNow: true,
+						canNull: false,
+						isError: false,
 						tip: {
 							place: 'right',
 							text: '',
@@ -57,53 +62,7 @@
 				}
 			}
 		},
-		computed:{
-			isMail () {
-				let reg = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/
-				if (!reg.test(this.loginForm.loginName.value)) {
-					return false
-				}
-				return true
-			},
-			isPassword () {
-				if (this.loginForm.password.value.length >= 6 && this.loginForm.password.value.length <= 13) {
-					return true
-				}
-				return false
-			}
-		},
 		methods:{
-			iChange (value, _this) {
-				this.isCheck(value, _this)
-			},
-			isCheck (value, _this) {
-				let name = _this.name
-				let now = this.loginForm[name]
-				let flag = true
-				if (value === '' || value.length === 0) {
-					if (!(typeof (now.emptyText) === 'undefined')) {
-						this.showTipError(now, now.emptyText)
-					} else {
-						this.showTipError(now, now.errorText)
-					}
-					flag = false
-				} else {
-					this.closeTipError(now)
-					flag = true
-					if (typeof (now.verification) !== 'undefined') {
-						let reg = new RegExp(now.verification)
-						if (!reg.test(value)) {
-							this.showTipError(now, now.errorText)
-							flag = false
-						} else {
-							this.closeTipError(now)
-							flag = true
-							// ajax 验证
-						}
-					}
-				}
-				return flag
-			},
 			showTipError (obj, text) {
 				obj.tip.text = text
 				obj.tip.show = true
@@ -114,23 +73,10 @@
 				obj.isError = false
 			},
 			login () {
-				let flag = false
 				let _this = this
 				let user = {}
-				for (let name in this.loginForm) {
-					let obj = this.loginForm[name]
-					flag = this.isCheck(obj.value, obj)
-					if (!flag) {
-						return
-					}
-				}
-				if (!flag) {
-					return
-				}
-				for (let name in this.loginForm) {
-					let obj = this.loginForm[name]
-					user[obj.name] = obj.value
-				}
+				let flag = _this.epCheck(['login'], this.loginForm)
+				console.log(flag)
 				// 退出登录
 				_this.$http.post(_this.URL.LOGIN_OUT).then((re) => {
 					if (re.status === 200) {
