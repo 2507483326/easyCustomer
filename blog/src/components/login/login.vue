@@ -26,8 +26,8 @@
 		data () {
 			return {
 				loginForm:{
-					email: {
-						name: 'email',
+					loginName: {
+						name: 'loginName',
 						alias: '邮箱',
 						value: '',
 						placeholder: '请输入邮箱',
@@ -76,6 +76,13 @@
 				let _this = this
 				let user = {}
 				let flag = _this.epCheck(['login'], this.loginForm)
+				if (!flag) {
+					return
+				}
+				for (let name in this.loginForm) {
+					let obj = this.loginForm[name]
+					user[obj.name] = obj.value
+				}
 				console.log(flag)
 				// 退出登录
 				_this.$http.post(_this.URL.LOGIN_OUT).then((re) => {

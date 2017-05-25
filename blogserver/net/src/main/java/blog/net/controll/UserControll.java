@@ -15,12 +15,14 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
@@ -74,6 +76,9 @@ public class UserControll {
 
     @Resource
     RedisTemplate redisTemplate;
+
+    @Value("${shiroMd5Count}")
+    int hashIterations;
 
 
     @GetMapping(value = "/jdbc")
@@ -286,6 +291,7 @@ public class UserControll {
             excution.setMessage("参数不匹配");
             return new Excution(false, excution);
         }
+        String oldPassword = user.getPassword();
         //进行判空操作
         //验证码判断
         String randomCode = redisTemplate.opsForValue().get(user.getEmail() + "code").toString();
@@ -300,6 +306,14 @@ public class UserControll {
             user.setLoginName(user.getEmail());
             user.setRegIp(epatUtils.getIpAddress(request));
             user.setRegTime(new Date());
+            // 加盐 密码加密
+            Object salt = EpatString.getRandomString(20);//盐值
+            Object credentials = user.getPassword();//密码
+            String hashAlgorithmName = "MD5";//加密方式
+            Object simpleHash = new SimpleHash(hashAlgorithmName, credentials,
+                    salt, hashIterations);
+            user.setPassword(simpleHash.toString());
+            user.setSalt(salt.toString());
             userService.register(user);
         }catch (Exception e) {
             logger.error("注册失败，数据库插入错误", e);
@@ -308,7 +322,7 @@ public class UserControll {
         logger.info("=========" + user);
         Subject currentUser = SecurityUtils.getSubject();
         try {
-            ShiroToken token = new ShiroToken(user.getLoginName(),user.getPassword());
+            ShiroToken token = new ShiroToken(user.getLoginName(), oldPassword);
             token.setRememberMe(true);
             currentUser.login(token);
         } catch (Exception e) {

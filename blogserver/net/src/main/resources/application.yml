@@ -7,9 +7,9 @@ myJdbc:
   basePackage: blog.db.dao
   daoSuffix: Dao
   sqlLoader: /sql
-  url: jdbc:mysql://localhost/article
+  url: jdbc:mysql://123.206.183.163:3306/article
   userName: root
-  passWord: 123456
+  passWord: 245167215
 spring:
   mail:
     host: smtp.163.com

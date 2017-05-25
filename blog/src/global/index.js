@@ -5,7 +5,7 @@ import URL from './url'
 let Global = (() => {
 	// 定义常量
 	const NGINX = 'http://localhost/articleResource/'
-	const SERVER = 'http://localhost:8264/'
+	const SERVER = 'http://127.0.0.1:8264/'
 
 	// 用户未登录状态码
     const USER_NOLOGIN = 601

@@ -151,10 +151,15 @@
 					if (re.status === 200) {
 						if (data.success) {
 							// 执行登录
-							_this.$store.dispatch('login', data.substance)
+							_this.$store.dispatch('login', data.data)
 							// 是否跳转
 						} else {
 							// 注册失败
+							_this.$Notice.error({
+			                    title: '注册失败',
+			                    duration: 5,
+			                    top: 50
+			                })
 						}
 					}
 				}).catch((error) => {

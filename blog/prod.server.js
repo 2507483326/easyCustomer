@@ -1,41 +1,19 @@
 var express = require('express')
 
-var port = 8219
+var port = 8249
 
 var app = express()
 
 var router = express.Router()
-
-app.use(router)
-
-
-app.use(express.static('./dist'))
 
 router.get('/', function(req, res, next){
   req.url = '/index.html'
   next()
 })
 
-router.get('/blog', function(req, res, next){
-  req.url = '/index.html'
-  next()
-})
+app.use(router)
 
-router.get('/blog/index', function(req, res, next){
-  req.url = '/index.html'
-  next()
-})
-
-router.get('/blog/login', function(req, res, next){
-  req.url = '/index.html'
-  next()
-})
-
-router.get('/blog/aboutMe', function(req, res, next){
-  req.url = '/index.html'
-  next()
-})
-
+app.use(express.static('./dist'))
 
 module.exports = app.listen(port, function (err) {
   if (err) {
