@@ -1,8 +1,10 @@
 E:\project\easyCustomer\blogserver\service\src\main\java\blog\service\global\Global.java
 E:\project\easyCustomer\blogserver\service\src\main\java\blog\service\model\User.java
+E:\project\easyCustomer\blogserver\service\src\main\java\blog\service\exception\GlobalException.java
 E:\project\easyCustomer\blogserver\service\src\main\java\blog\service\service\RuleService.java
 E:\project\easyCustomer\blogserver\service\src\main\java\blog\service\dto\ErrorExcution.java
 E:\project\easyCustomer\blogserver\service\src\main\java\blog\service\model\Rule.java
+E:\project\easyCustomer\blogserver\service\src\main\java\blog\service\enums\ResultEnum.java
 E:\project\easyCustomer\blogserver\service\src\main\java\blog\service\dto\Excution.java
 E:\project\easyCustomer\blogserver\service\src\main\java\blog\service\dto\UserExcution.java
 E:\project\easyCustomer\blogserver\service\src\main\java\blog\service\service\UserService.java

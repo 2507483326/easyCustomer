@@ -83,7 +83,6 @@
 					let obj = this.loginForm[name]
 					user[obj.name] = obj.value
 				}
-				console.log(flag)
 				// 退出登录
 				_this.$http.post(_this.URL.LOGIN_OUT).then((re) => {
 					if (re.status === 200) {
@@ -101,8 +100,8 @@
 					      }
 					    })
 					}
-				}).catch((error) => {
-					console.log('error' + error)
+				}).catch(() => {
+					_this.showTip('登录失败，请重试')
 				})
 			},
 			showTip (text) {
@@ -152,6 +151,8 @@
 						this.showTipError(loginName, ERROR_TEXT)
 		                this.showTip(ERROR_TEXT)
 					break
+					default :
+		                this.showTip('登录失败，请重试')
 				}
 			}
 		},

@@ -6,8 +6,18 @@ package blog.service.global;
 public class Global {
 
     // 用户盐
-    public static final String USER_SALT = "RI28N4fd50WEjkBeqCsuoiGbzF7DpLcUlJ9y61wKtXOg3vVrMZAQHYxPnhaSmT";
+    public static final Integer SALT_LENGTH = 20;
 
-    // 用户加密次数
-    public static final int USER_COUNT = 9487;
+    // 发送邮件验证码存储时间
+    public static final int EMAIL_REPEAT_TIME = 1;
+
+    // 发送邮件验证码信息存储时间
+    public static final int EMAIL_CODE_TIME = 10;
+
+    // 发送邮件别名
+    public static final String EMAIL_REPEAT_NAME = "code";
+
+    public static final String EMAIL_CODE_NAME = "user";
+
+
 }

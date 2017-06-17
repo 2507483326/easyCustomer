@@ -1,7 +1,8 @@
 package blog.net.config;
 
-import blog.service.dto.ErrorExcution;
+import blog.net.Tools.EpatResultUtil;
 import blog.service.dto.Excution;
+import blog.service.exception.GlobalException;
 import blog.service.global.GlobalError;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,12 +21,13 @@ public class GlobalExceptionHandler {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @ExceptionHandler(RuntimeException.class)
+    @ExceptionHandler(Exception.class)
     @ResponseBody
-    public Excution exceptionHandler(RuntimeException e, HttpServletResponse response) {
-        ErrorExcution errorExcution = new ErrorExcution(GlobalError.ERROR_CODE,e.getMessage());
-        logger.info("错误："+e.toString());
-        Excution excution = new Excution(false, errorExcution);
-        return excution;
+    public Excution exceptionHandler(Exception e, HttpServletResponse response) {
+        if (e instanceof GlobalException) {
+            GlobalException globalException = (GlobalException) e;
+            return EpatResultUtil.error(globalException.getCode(), globalException.getMessage());
+        }
+        return EpatResultUtil.error(GlobalError.ERROR_CODE, e.getMessage());
     }
 }

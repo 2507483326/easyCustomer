@@ -1,3 +1,4 @@
+blog\service\enums\ResultEnum.class
 blog\service\dto\ErrorExcution.class
 blog\service\global\Global.class
 blog\service\model\User.class
@@ -6,4 +7,5 @@ blog\service\global\GlobalError.class
 blog\service\model\Rule.class
 blog\service\dto\Excution.class
 blog\service\service\UserService.class
+blog\service\exception\GlobalException.class
 blog\service\dto\UserExcution.class

@@ -6,6 +6,7 @@ E:\project\easyCustomer\blogserver\net\src\main\java\blog\net\config\MyShiroReal
 E:\project\easyCustomer\blogserver\net\src\main\java\blog\net\config\RetryLimitHashedCredentialsMatcher.java
 E:\project\easyCustomer\blogserver\net\src\main\java\blog\net\config\MyJdbc.java
 E:\project\easyCustomer\blogserver\net\src\main\java\blog\net\config\GlobalExceptionHandler.java
+E:\project\easyCustomer\blogserver\net\src\main\java\blog\net\Tools\EpatResultUtil.java
 E:\project\easyCustomer\blogserver\net\src\main\java\blog\net\Tools\EpatEmail.java
 E:\project\easyCustomer\blogserver\net\src\main\java\blog\net\dbUtil\UserUtil.java
 E:\project\easyCustomer\blogserver\net\src\main\java\blog\net\serviceImpl\RuleServiceImpl.java

@@ -283,7 +283,7 @@
 		position absolute
 		top 0
 		left 0
-		bottom 50px
+		bottom 0
 		width 100%
 		overflow hidden
 		.trundle_page

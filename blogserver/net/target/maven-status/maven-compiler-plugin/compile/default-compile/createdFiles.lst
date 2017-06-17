@@ -1,4 +1,5 @@
 blog\net\BlogApplication.class
+blog\net\Tools\EpatResultUtil.class
 blog\net\config\RetryLimitHashedCredentialsMatcher.class
 blog\net\config\CorsConfig.class
 blog\net\config\RedisCacheConfig.class

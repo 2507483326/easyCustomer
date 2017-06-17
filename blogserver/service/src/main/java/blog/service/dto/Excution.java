@@ -1,32 +1,18 @@
 package blog.service.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * Created by Epat on 2017/2/11.
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Excution <T>{
 
     private boolean success;
 
     private T data;
-
-    public Excution(boolean success, T data) {
-        this.success = success;
-        this.data = data;
-    }
-
-    public boolean isSuccess() {
-        return success;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
 }

@@ -75,6 +75,11 @@
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
         <!--spring boot热加载-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

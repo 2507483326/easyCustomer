@@ -1,5 +1,6 @@
 package blog.service.service;
 
+import blog.service.dto.Excution;
 import blog.service.dto.UserExcution;
 import blog.service.model.User;
 
@@ -18,11 +19,20 @@ public interface UserService {
 
     User getUserByUid (String uuid);
 
-    User Login (String loginName);
+    Excution Login (User  user);
 
     User getUserByEmail (String email);
 
-    void  register (User user);
+    User getUserByLoginName (String loginName);
 
     UserExcution getUser (User user, Boolean isRemember);
+
+    Excution rememberLogin ();
+
+    Boolean isExistEmail (String data);
+
+    Excution getValidateCode (String email);
+
+    Excution register (User user, String validateCode, String ipAddress, Integer hashIterations);
+
 }

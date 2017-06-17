@@ -6,7 +6,6 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.cache.Cache;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
@@ -18,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import qing.tool.StringTool;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -53,7 +53,7 @@ public class MyShiroRealm extends AuthorizingRealm{
         switch (token.getType()){
             case ShiroToken.typeLogin:
                 String userName = token.getUsername();
-                userSession = userService.Login(userName);
+                userSession = userService.getUserByLoginName(userName);
                 if (userSession == null) {
                     throw new UnknownAccountException(userName + ":::: login failed");
                 }

@@ -1,0 +1,29 @@
+17-05-24 15:58:45.173 DEBUG (_Log4jLoggerFactory.java:44) Couldn't find template in cache for "email.ftl"("zh_CN", UTF-8, parsed); will try to load it.
+17-05-24 15:58:45.180 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh_CN.ftl"): Not found
+17-05-24 15:58:45.181 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh.ftl"): Not found
+17-05-24 15:58:45.182 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email.ftl"): Found
+17-05-24 15:58:45.182 DEBUG (_Log4jLoggerFactory.java:44) Loading template for "email.ftl"("zh_CN", UTF-8, parsed) from "E:\\project\\easyCustomer\\blogserver\\net\\target\\classes\\templates\\email.ftl"
+17-05-24 16:10:13.879 DEBUG (_Log4jLoggerFactory.java:44) Couldn't find template in cache for "email.ftl"("zh_CN", UTF-8, parsed); will try to load it.
+17-05-24 16:10:13.882 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh_CN.ftl"): Not found
+17-05-24 16:10:13.883 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh.ftl"): Not found
+17-05-24 16:10:13.884 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email.ftl"): Found
+17-05-24 16:10:13.884 DEBUG (_Log4jLoggerFactory.java:44) Loading template for "email.ftl"("zh_CN", UTF-8, parsed) from "E:\\project\\easyCustomer\\blogserver\\net\\target\\classes\\templates\\email.ftl"
+17-05-24 17:02:22.801 DEBUG (_Log4jLoggerFactory.java:44) Couldn't find template in cache for "email.ftl"("zh_CN", UTF-8, parsed); will try to load it.
+17-05-24 17:02:22.803 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh_CN.ftl"): Not found
+17-05-24 17:02:22.804 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh.ftl"): Not found
+17-05-24 17:02:22.805 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email.ftl"): Found
+17-05-24 17:02:22.806 DEBUG (_Log4jLoggerFactory.java:44) Loading template for "email.ftl"("zh_CN", UTF-8, parsed) from "E:\\project\\easyCustomer\\blogserver\\net\\target\\classes\\templates\\email.ftl"
+17-05-24 17:07:24.664 DEBUG (_Log4jLoggerFactory.java:44) Couldn't find template in cache for "email.ftl"("zh_CN", UTF-8, parsed); will try to load it.
+17-05-24 17:07:24.666 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh_CN.ftl"): Not found
+17-05-24 17:07:24.667 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh.ftl"): Not found
+17-05-24 17:07:24.668 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email.ftl"): Found
+17-05-24 17:07:24.668 DEBUG (_Log4jLoggerFactory.java:44) Loading template for "email.ftl"("zh_CN", UTF-8, parsed) from "E:\\project\\easyCustomer\\blogserver\\net\\target\\classes\\templates\\email.ftl"
+17-05-24 19:57:18.027 DEBUG (_Log4jLoggerFactory.java:44) Couldn't find template in cache for "email.ftl"("zh_CN", UTF-8, parsed); will try to load it.
+17-05-24 19:57:18.028 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh_CN.ftl"): Not found
+17-05-24 19:57:18.028 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh.ftl"): Not found
+17-05-24 19:57:18.029 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email.ftl"): Found
+17-05-24 19:57:18.029 DEBUG (_Log4jLoggerFactory.java:44) Loading template for "email.ftl"("zh_CN", UTF-8, parsed) from "E:\\project\\easyCustomer\\blogserver\\net\\target\\classes\\templates\\email.ftl"
+17-05-24 19:58:23.465 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh_CN.ftl"): Not found
+17-05-24 19:58:23.465 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email_zh.ftl"): Not found
+17-05-24 19:58:23.466 DEBUG (_Log4jLoggerFactory.java:44) TemplateLoader.findTemplateSource("email.ftl"): Found
+17-05-24 19:58:23.466 DEBUG (_Log4jLoggerFactory.java:44) "email.ftl"("zh_CN", UTF-8, parsed): using cached since E:\project\easyCustomer\blogserver\net\target\classes\templates\email.ftl hasn't changed.

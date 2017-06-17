@@ -162,8 +162,8 @@
 			                })
 						}
 					}
-				}).catch((error) => {
-					console.log('error' + error)
+				}).catch(() => {
+					_this.$Notice.error({title: '注册失败'})
 				})
 			},
 			getValidateCode () {
@@ -176,7 +176,6 @@
 				let excution = {}
 				const EMAIL_HASEMAIL_TEXT = '此邮箱已被注册'
 				excution['email'] = email
-				console.log(this.epCheckSingle(['registerGroup'], this.registerForm, 'email'))
 				if (!this.epCheckSingle(['registerGroup'], this.registerForm, 'email')) {
 					return
 				}
@@ -202,14 +201,13 @@
 				      			case _this.ERROR_CODE.EMAIL_HASEMAIL :
 				      				_this.showTipError(emailObj, EMAIL_HASEMAIL_TEXT)
 				      			break
+				      			default :
+				      				_this.$Notice.error({title: '发送邮件失败'})
 				      		}
-				      		_this.$Notice.error({
-				      			title: '发送邮件失败'
-				      		})
 				      	}
 					}
-				}).catch((error) => {
-					console.log('error' + error)
+				}).catch(() => {
+					_this.$Notice.error({title: '发送邮件失败'})
 				})
 			},
 			starValidate () {
